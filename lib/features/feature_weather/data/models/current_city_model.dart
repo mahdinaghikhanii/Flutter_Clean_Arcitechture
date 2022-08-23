@@ -1,53 +1,57 @@
+import 'package:flutter_clean_arcitechture/features/feature_weather/domain/entities/current_city_entity.dart';
 
-class CurrentCityModel {
-  CurrentCityModel({
-      this.coord, 
-      this.weather, 
-      this.base, 
-      this.main, 
-      this.visibility, 
-      this.wind, 
-      this.clouds, 
-      this.dt, 
-      this.sys, 
-      this.timezone, 
-      this.id, 
-      this.name, 
-      this.cod,});
+class CurrentCityModel extends CurrentCityEntity {
+  const CurrentCityModel({
+    Coord? coord,
+    List<Weather>? weather,
+    String? base,
+    Main? main,
+    int? visibility,
+    Wind? wind,
+    Clouds? clouds,
+    int? dt,
+    Sys? sys,
+    int? timezone,
+    int? id,
+    String? name,
+    int? cod,
+  }) : super(
+            coord: coord,
+            weather: weather,
+            base: base,
+            main: main,
+            visibility: visibility,
+            wind: wind,
+            clouds: clouds,
+            dt: dt,
+            sys: sys,
+            timezone: timezone,
+            id: id,
+            name: name,
+            cod: cod);
 
-  CurrentCityModel.fromJson(dynamic json) {
-    coord = json['coord'] != null ? Coord.fromJson(json['coord']) : null;
+  factory CurrentCityModel.fromJson(dynamic json) {
+    List<Weather> weather = [];
     if (json['weather'] != null) {
-      weather = [];
       json['weather'].forEach((v) {
-        weather?.add(Weather.fromJson(v));
+        weather.add(Weather.fromJson(v));
       });
     }
-    base = json['base'];
-    main = json['main'] != null ? Main.fromJson(json['main']) : null;
-    visibility = json['visibility'];
-    wind = json['wind'] != null ? Wind.fromJson(json['wind']) : null;
-    clouds = json['clouds'] != null ? Clouds.fromJson(json['clouds']) : null;
-    dt = json['dt'];
-    sys = json['sys'] != null ? Sys.fromJson(json['sys']) : null;
-    timezone = json['timezone'];
-    id = json['id'];
-    name = json['name'];
-    cod = json['cod'];
+    return CurrentCityModel(
+        coord: json['coord'] != null ? Coord.fromJson(json['coord']) : null,
+        weather: weather,
+        base: json['base'],
+        main: json['main'] != null ? Main.fromJson(json['main']) : null,
+        visibility: json['visibility'],
+        wind: json['wind'] != null ? Wind.fromJson(json['wind']) : null,
+        clouds: json['clouds'] != null ? Clouds.fromJson(json['clouds']) : null,
+        dt: json['dt'],
+        sys: json['sys'] != null ? Sys.fromJson(json['sys']) : null,
+        timezone: json['timezone'],
+        id: json['id'],
+        name: json['name'],
+        cod: json['cod']);
   }
-  Coord? coord;
-  List<Weather>? weather;
-  String? base;
-  Main? main;
-  int? visibility;
-  Wind? wind;
-  Clouds? clouds;
-  int? dt;
-  Sys? sys;
-  int? timezone;
-  int? id;
-  String? name;
-  int? cod;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -78,7 +82,6 @@ class CurrentCityModel {
     map['cod'] = cod;
     return map;
   }
-
 }
 
 /// type : 1
@@ -90,12 +93,13 @@ class CurrentCityModel {
 
 class Sys {
   Sys({
-      this.type, 
-      this.id, 
-      this.message, 
-      this.country, 
-      this.sunrise, 
-      this.sunset,});
+    this.type,
+    this.id,
+    this.message,
+    this.country,
+    this.sunrise,
+    this.sunset,
+  });
 
   Sys.fromJson(dynamic json) {
     type = json['type'];
@@ -122,14 +126,14 @@ class Sys {
     map['sunset'] = sunset;
     return map;
   }
-
 }
 
 /// all : 1
 
 class Clouds {
   Clouds({
-      this.all,});
+    this.all,
+  });
 
   Clouds.fromJson(dynamic json) {
     all = json['all'];
@@ -141,7 +145,6 @@ class Clouds {
     map['all'] = all;
     return map;
   }
-
 }
 
 /// speed : 1.5
@@ -149,8 +152,9 @@ class Clouds {
 
 class Wind {
   Wind({
-      this.speed, 
-      this.deg,});
+    this.speed,
+    this.deg,
+  });
 
   Wind.fromJson(dynamic json) {
     speed = json['speed'];
@@ -165,7 +169,6 @@ class Wind {
     map['deg'] = deg;
     return map;
   }
-
 }
 
 /// temp : 282.55
@@ -177,12 +180,13 @@ class Wind {
 
 class Main {
   Main({
-      this.temp, 
-      this.feelsLike, 
-      this.tempMin, 
-      this.tempMax, 
-      this.pressure, 
-      this.humidity,});
+    this.temp,
+    this.feelsLike,
+    this.tempMin,
+    this.tempMax,
+    this.pressure,
+    this.humidity,
+  });
 
   Main.fromJson(dynamic json) {
     temp = json['temp'];
@@ -209,7 +213,6 @@ class Main {
     map['humidity'] = humidity;
     return map;
   }
-
 }
 
 /// id : 800
@@ -219,10 +222,11 @@ class Main {
 
 class Weather {
   Weather({
-      this.id, 
-      this.main, 
-      this.description, 
-      this.icon,});
+    this.id,
+    this.main,
+    this.description,
+    this.icon,
+  });
 
   Weather.fromJson(dynamic json) {
     id = json['id'];
@@ -243,7 +247,6 @@ class Weather {
     map['icon'] = icon;
     return map;
   }
-
 }
 
 /// lon : -122.08
@@ -251,8 +254,9 @@ class Weather {
 
 class Coord {
   Coord({
-      this.lon, 
-      this.lat,});
+    this.lon,
+    this.lat,
+  });
 
   Coord.fromJson(dynamic json) {
     lon = json['lon'];
@@ -267,5 +271,4 @@ class Coord {
     map['lat'] = lat;
     return map;
   }
-
 }
