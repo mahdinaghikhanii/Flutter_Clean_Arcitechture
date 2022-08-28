@@ -16,3 +16,16 @@ class ApiProvider {
     return reponse;
   }
 }
+
+class Job {
+  final String job;
+  final String namejob;
+
+  Job(this.job, this.namejob);
+
+  Job.fromJson(Map<String, dynamic> json)
+      : job = json['job'],
+        namejob = json['namejob'];
+}
+
+class Api {}

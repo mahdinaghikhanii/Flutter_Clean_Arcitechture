@@ -1,4 +1,4 @@
-import 'package:flutter_clean_arcitechture/features/feature_weather/domain/entities/current_city_entity.dart';
+import '../../domain/entities/current_city_entity.dart';
 
 class CurrentCityModel extends CurrentCityEntity {
   const CurrentCityModel({

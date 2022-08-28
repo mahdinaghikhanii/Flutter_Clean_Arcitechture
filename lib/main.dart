@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_arcitechture/core/widgets/main_wrapper.dart';
+import 'core/widgets/main_wrapper.dart';
 
 void main() {
   runApp(const MyApp());
